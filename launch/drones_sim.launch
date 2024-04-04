@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="ROBOTS_NUM" default="3" />
+    <arg name="NAME" default="hummingbird" />
+    <arg name="posfile" default="$(find formation_control)/pos.txt"/>
+    <arg name="GUI" default="true"/>
+
+    <arg name="use_robot_0" default="1"/>
+    <arg name="use_robot_1" default="1"/>
+    <arg name="use_robot_2" default="1"/>
+    <arg name="use_robot_3" default="1"/>
+    <arg name="use_robot_4" default="1"/>
+    <arg name="use_robot_5" default="1"/>
+    <arg name="use_robot_6" default="1"/>
+    <arg name="use_robot_7" default="1"/>
+    <arg name="use_robot_8" default="1"/>
+    <arg name="use_robot_9" default="1"/>
+    <arg name="use_robot_10" default="1"/>
+    <arg name="use_robot_11" default="1"/>
+    <arg name="use_robot_12" default="0"/>
+    <arg name="use_robot_13" default="0"/>
+    <arg name="use_robot_14" default="0"/>
+    <arg name="use_robot_15" default="0"/>
+    <arg name="use_robot_16" default="0"/>
+    <arg name="use_robot_17" default="0"/>
+    <arg name="use_robot_18" default="0"/>
+    <arg name="use_robot_19" default="0"/>
+
+
+    <node if="$(arg GUI)" pkg="rviz" type="rviz" name="rviz" args="-d $(find formation_control)/rviz/drones.rviz" output="screen" />
+
+    <node if="$(arg use_robot_0)" pkg="formation_control" type="drone_sim" name="drone_sim_0" output="screen" >
+        <param name="ROBOT_ID" value="0" />
+        <param name="NAME" value="$(arg NAME)_0" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot0/odom" to="/hummingbird0/ground_truth/odometry"/>
+        <remap from="/robot0/cmd_vel" to="/hummingbird0/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_1)" pkg="formation_control" type="drone_sim" name="drone_sim_1" output="screen" >
+        <param name="ROBOT_ID" value="1" />
+        <param name="NAME" value="$(arg NAME)_1" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot1/odom" to="/hummingbird1/ground_truth/odometry"/>
+        <remap from="/robot1/cmd_vel" to="/hummingbird1/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_2)" pkg="formation_control" type="drone_sim" name="drone_sim_2" >
+        <param name="ROBOT_ID" value="2" />
+        <param name="NAME" value="$(arg NAME)_2" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot2/odom" to="/hummingbird2/ground_truth/odometry"/>
+        <remap from="/robot2/cmd_vel" to="/hummingbird2/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_3)" pkg="formation_control" type="drone_sim" name="drone_sim_3" >
+        <param name="ROBOT_ID" value="3" />
+        <param name="NAME" value="$(arg NAME)_3" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot3/odom" to="/hummingbird3/ground_truth/odometry"/>
+        <remap from="/robot3/cmd_vel" to="/hummingbird3/autopilot/velocity_command"/>
+    </node>
+    <node if="$(arg use_robot_4)" pkg="formation_control" type="drone_sim" name="drone_sim_4">
+        <param name="ROBOT_ID" value="4" />
+        <param name="NAME" value="$(arg NAME)_4" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot4/odom" to="/hummingbird4/ground_truth/odometry"/>
+        <remap from="/robot4/cmd_vel" to="/hummingbird4/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_5)" pkg="formation_control" type="drone_sim" name="drone_sim_5" >
+        <param name="ROBOT_ID" value="5" />
+        <param name="NAME" value="$(arg NAME)_5" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot5/odom" to="/hummingbird5/ground_truth/odometry"/>
+        <remap from="/robot5/cmd_vel" to="/hummingbird5/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_6)" pkg="formation_control" type="drone_sim" name="drone_sim_6" >
+        <param name="ROBOT_ID" value="6" />
+        <param name="NAME" value="$(arg NAME)_6" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot6/odom" to="/hummingbird6/ground_truth/odometry"/>
+        <remap from="/robot6/cmd_vel" to="/hummingbird6/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_7)" pkg="formation_control" type="drone_sim" name="drone_sim_7" >
+        <param name="ROBOT_ID" value="7" />
+        <param name="NAME" value="$(arg NAME)_7" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot7/odom" to="/hummingbird7/ground_truth/odometry"/>
+        <remap from="/robot7/cmd_vel" to="/hummingbird7/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_8)" pkg="formation_control" type="drone_sim" name="drone_sim_8" >
+        <param name="ROBOT_ID" value="8" />
+        <param name="NAME" value="$(arg NAME)_8" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot8/odom" to="/hummingbird8/ground_truth/odometry"/>
+        <remap from="/robot8/cmd_vel" to="/hummingbird8/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_9)" pkg="formation_control" type="drone_sim" name="drone_sim_9" >
+        <param name="ROBOT_ID" value="9" />
+        <param name="NAME" value="$(arg NAME)_9" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot9/odom" to="/hummingbird9/ground_truth/odometry"/>
+        <remap from="/robot9/cmd_vel" to="/hummingbird9/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_10)" pkg="formation_control" type="drone_sim" name="drone_sim_10" >
+        <param name="ROBOT_ID" value="10" />
+        <param name="NAME" value="$(arg NAME)_10" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot10/odom" to="/hummingbird10/ground_truth/odometry"/>
+        <remap from="/robot10/cmd_vel" to="/hummingbird10/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_11)" pkg="formation_control" type="drone_sim" name="drone_sim_11" >
+        <param name="ROBOT_ID" value="11" />
+        <param name="NAME" value="$(arg NAME)_1" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot11/odom" to="/hummingbird11/ground_truth/odometry"/>
+        <remap from="/robot11/cmd_vel" to="/hummingbird11/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_12)" pkg="formation_control" type="drone_sim" name="drone_sim_12" >
+        <param name="ROBOT_ID" value="12" />
+        <param name="NAME" value="$(arg NAME)_2" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot12/odom" to="/hummingbird12/ground_truth/odometry"/>
+        <remap from="/robot12/cmd_vel" to="/hummingbird12/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_13)" pkg="formation_control" type="drone_sim" name="drone_sim_13" >
+        <param name="ROBOT_ID" value="13" />
+        <param name="NAME" value="$(arg NAME)_13" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot13/odom" to="/hummingbird13/ground_truth/odometry"/>
+        <remap from="/robot13/cmd_vel" to="/hummingbird13/autopilot/velocity_command"/>
+    </node>
+    <node if="$(arg use_robot_14)" pkg="formation_control" type="drone_sim" name="drone_sim_14">
+        <param name="ROBOT_ID" value="14" />
+        <param name="NAME" value="$(arg NAME)_14" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot14/odom" to="/hummingbird14/ground_truth/odometry"/>
+        <remap from="/robot14/cmd_vel" to="/hummingbird14/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_15)" pkg="formation_control" type="drone_sim" name="drone_sim_15" >
+        <param name="ROBOT_ID" value="15" />
+        <param name="NAME" value="$(arg NAME)_15" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot15/odom" to="/hummingbird15/ground_truth/odometry"/>
+        <remap from="/robot15/cmd_vel" to="/hummingbird15/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_16)" pkg="formation_control" type="drone_sim" name="drone_sim_16" >
+        <param name="ROBOT_ID" value="16" />
+        <param name="NAME" value="$(arg NAME)_16" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot16/odom" to="/hummingbird16/ground_truth/odometry"/>
+        <remap from="/robot16/cmd_vel" to="/hummingbird16/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_17)" pkg="formation_control" type="drone_sim" name="drone_sim_17" >
+        <param name="ROBOT_ID" value="17" />
+        <param name="NAME" value="$(arg NAME)_17" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot17/odom" to="/hummingbird17/ground_truth/odometry"/>
+        <remap from="/robot17/cmd_vel" to="/hummingbird17/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_18)" pkg="formation_control" type="drone_sim" name="drone_sim_18" >
+        <param name="ROBOT_ID" value="18" />
+        <param name="NAME" value="$(arg NAME)_18" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot18/odom" to="/hummingbird18/ground_truth/odometry"/>
+        <remap from="/robot18/cmd_vel" to="/hummingbird18/autopilot/velocity_command"/>
+    </node>
+
+    <node if="$(arg use_robot_19)" pkg="formation_control" type="drone_sim" name="drone_sim_19" >
+        <param name="ROBOT_ID" value="19" />
+        <param name="NAME" value="$(arg NAME)_19" />
+        <param name="FILE" value="$(arg posfile)" />
+        <remap from="/robot19/odom" to="/hummingbird19/ground_truth/odometry"/>
+        <remap from="/robot19/cmd_vel" to="/hummingbird19/autopilot/velocity_command"/>
+    </node>
+
+
+
+</launch>

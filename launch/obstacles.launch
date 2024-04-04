@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="OBSTACLES_NUM" default="2" />
+    <arg name="x0" default="-5.0" />
+    <arg name="y0" default="9.0" />
+    <arg name="x1" default="-7.0" />
+    <arg name="y1" default="5.0" />
+    <arg name="x2" default="0.0" />
+    <arg name="y2" default="0.0" />
+    <arg name="x3" default="0.0" />
+    <arg name="y3" default="0.0" />
+
+
+    <node name="obstacles_node"  pkg="formation_control" type="obstacles_node">
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="x0" value="$(arg x0)" />
+        <param name="y0" value="$(arg y0)" />
+        <param name="x1" value="$(arg x1)" />
+        <param name="y1" value="$(arg y1)" />
+        <param name="x2" value="$(arg x2)" />
+        <param name="y2" value="$(arg y2)" />
+        <param name="x3" value="$(arg x3)" />
+        <param name="y3" value="$(arg y3)" />
+    </node>
+
+</launch>

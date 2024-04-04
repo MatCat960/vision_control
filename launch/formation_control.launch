@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <arg name="ROBOTS_NUM" default="3" />
+    <arg name="CLUSTERS_NUM" default="4" />
+    <arg name="OBSTACLES_NUM" default="2" />
+    <arg name="ROBOT_RANGE" default="100.0" />
+    <arg name="ROBOT_FOV" default="360.0" />
+
+    <node name="formation_control_node_0"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird0/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird0/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster0/virtual_agent" />
+        <remap from="/detections" to="/hummingbird0/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot0/pose" />
+        <param name="ID" value="0" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+    <node name="formation_control_node_1"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird1/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird1/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster0/virtual_agent" />
+        <remap from="/detections" to="/hummingbird1/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot1/pose" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+        <param name="ID" value="1" />
+    </node>
+    <node name="formation_control_node_2"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird2/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird2/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster0/virtual_agent" />
+        <remap from="/detections" to="/hummingbird2/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot2/pose" />
+        <param name="ID" value="2" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+
+    <node name="formation_control_node_3"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird3/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird3/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster1/virtual_agent" />
+        <remap from="/detections" to="/hummingbird3/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot3/pose" />
+        <param name="ID" value="3" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+    <node name="formation_control_node_4"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird4/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird4/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster1/virtual_agent" />
+        <remap from="/detections" to="/hummingbird4/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot4/pose" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+        <param name="ID" value="4" />
+    </node>
+    <node name="formation_control_node_5"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird5/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird5/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster1/virtual_agent" />
+        <remap from="/detections" to="/hummingbird5/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot5/pose" />
+        <param name="ID" value="5" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+    <node name="formation_control_node_6"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird6/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird6/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster2/virtual_agent" />
+        <remap from="/detections" to="/hummingbird6/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot6/pose" />
+        <param name="ID" value="6" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+    <node name="formation_control_node_7"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird7/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird7/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster2/virtual_agent" />
+        <remap from="/detections" to="/hummingbird7/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot7/pose" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+        <param name="ID" value="7" />
+    </node>
+    <node name="formation_control_node_8"  pkg="formation_control" type="formation_control_node" output="screen">
+        <remap from="/odom" to="/hummingbird8/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird8/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster2/virtual_agent" />
+        <remap from="/detections" to="/hummingbird8/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot8/pose" />
+        <param name="ID" value="8" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+
+    <node name="formation_control_node_9"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird9/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird9/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster3/virtual_agent" />
+        <remap from="/detections" to="/hummingbird9/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot9/pose" />
+        <param name="ID" value="9" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+    <node name="formation_control_node_10"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird10/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird10/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster3/virtual_agent" />
+        <remap from="/detections" to="/hummingbird10/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot10/pose" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+        <param name="ID" value="10" />
+    </node>
+    <node name="formation_control_node_11"  pkg="formation_control" type="formation_control_node">
+        <remap from="/odom" to="/hummingbird11/ground_truth/odometry" />
+        <remap from="/cmd_vel_out" to="/hummingbird11/autopilot/velocity_command" />
+        <remap from="/target" to="/cluster3/virtual_agent" />
+        <remap from="/detections" to="/hummingbird11/detections"/>
+        <remap from="/neighbors_topic" to="/supervisor/robot11/pose" />
+        <param name="ID" value="11" />
+        <param name="ROBOTS_NUM" value="$(arg ROBOTS_NUM)" />
+        <param name="OBSTACLES_NUM" value="$(arg OBSTACLES_NUM)" />
+        <param name="CLUSTERS_NUM" value="$(arg CLUSTERS_NUM)" />
+    </node>
+
+
+</launch>
