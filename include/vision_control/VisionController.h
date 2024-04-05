@@ -31,10 +31,12 @@ namespace vision_control
         double min_vel_;
         double gamma_fov_, gamma_safe_, gamma_clf_;
         int vars_num_;
+        bool initialized;
 
     public:
-        VisionController(double fow_angle, double min_distance, double max_distance, int max_robots_);
+        VisionController();
         ~VisionController();
+        void init(double fow_angle, double min_distance, double max_distance, int max_robots);
         int applyCbf(Eigen::Vector3d &uopt, Eigen::Vector3d &ustar, Eigen::MatrixXd &p_j_i, Eigen::MatrixXd slack);
         // int applyCbfSingle(Eigen::Vector3d &uopt, Eigen::VectorXd &h_out, Eigen::Vector3d &ustar, Eigen::Vector3d &p_i, int n_robot, Eigen::MatrixXd &p_j, Eigen::MatrixXd slack);
         void setVerbose(bool verbose);

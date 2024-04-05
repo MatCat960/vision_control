@@ -7,9 +7,25 @@
 namespace vision_control
 {
 
-    VisionController::VisionController(double fow_angle, double min_distance, double max_distance, int max_robots) : fow_angle_(fow_angle), min_distance_(min_distance), max_distance_(max_distance), max_robots_(max_robots)
+    VisionController::VisionController()
+    {
+        initialized = false;
+    }
+
+    VisionController::~VisionController()
+    {
+        solver.clearSolver();
+    }
+    
+    void VisionController::init(double fow_angle, double min_distance, double max_distance, int max_robots)
     {
         std::cout << "Formation controller constructor called" << std::endl;
+
+        fow_angle_ = fow_angle;
+        min_distance_ = min_distance;
+        max_distance_ = max_distance;
+        max_robots_ = max_robots;
+
         H.resize(4, 4); // set sparse matrix size
         H.setZero();    // set all zeros
         f.resize(4);
@@ -68,14 +84,12 @@ namespace vision_control
         
 
         solver_init = false;
+        initialized = true;
         std::cout << "Formation controller constructor finished" << std::endl;
 
     }
 
-    VisionController::~VisionController()
-    {
-        solver.clearSolver();
-    }
+    
 
     void VisionController::setVelBounds(double v_min, double v_max)
     {
