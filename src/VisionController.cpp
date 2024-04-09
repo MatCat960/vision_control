@@ -221,10 +221,10 @@ namespace vision_control
         uopt = u_i.head(3);
         auto hdot = A * u_i;
 
-        std::cout << "Linear constraints: " << A << std::endl;
+        // std::cout << "Linear constraints: " << A << std::endl;
         // std::cout << "hdot: " << hdot.transpose() << std::endl;
         // std::cout << "lowerbound: " << lowerbound.transpose() << std::endl;
-        std::cout << "upperbound: " << upperbound.transpose() << std::endl;
+        // std::cout << "upperbound: " << upperbound.transpose() << std::endl;
         // std::cout << "Margin on obstacle avoidance constraints: " << (upperbound-hdot).transpose() << std::endl;
 
         // h_out = upperbound;
