@@ -40,7 +40,7 @@ namespace vision_control
         int applyCbf(Eigen::Vector3d &uopt, Eigen::Vector3d &ustar, Eigen::MatrixXd &p_j_i, Eigen::MatrixXd slack);
         // int applyCbfSingle(Eigen::Vector3d &uopt, Eigen::VectorXd &h_out, Eigen::Vector3d &ustar, Eigen::Vector3d &p_i, int n_robot, Eigen::MatrixXd &p_j, Eigen::MatrixXd slack);
         void setVerbose(bool verbose);
-        void setVelBounds(double v_min, double v_max);
+        void setVelBounds(double v_min, double v_max, double w_min, double w_max);
         void setGamma(double gamma_fov, double gamma_safe);
     };
 }

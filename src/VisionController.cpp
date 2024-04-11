@@ -91,12 +91,14 @@ namespace vision_control
 
     
 
-    void VisionController::setVelBounds(double v_min, double v_max)
+    void VisionController::setVelBounds(double v_min, double v_max, double w_min, double w_max)
     {
         max_vel_ = v_max;
         min_vel_ = v_min;
-        lowerbound.head(3) = min_vel_ * Eigen::Vector3d::Ones();
-        upperbound.head(3) = max_vel_ * Eigen::Vector3d::Ones();
+        lowerbound.head(2) = min_vel_ * Eigen::Vector2d::Ones();
+        lowerbound(2) = w_min;
+        upperbound.head(2) = max_vel_ * Eigen::Vector2d::Ones();
+        upperbound(2) = w_max;        
     }
 
     void VisionController::setGamma(double gamma_fov, double gamma_safe)
