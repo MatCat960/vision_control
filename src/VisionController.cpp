@@ -96,6 +96,8 @@ namespace vision_control
         max_vel_ = v_max;
         min_vel_ = v_min;
         lowerbound.head(2) = min_vel_ * Eigen::Vector2d::Ones();
+        // lowerbound(0) = 0.0;
+        // lowerbound(1) = v_min;
         lowerbound(2) = w_min;
         upperbound.head(2) = max_vel_ * Eigen::Vector2d::Ones();
         upperbound(2) = w_max;        
@@ -124,6 +126,12 @@ namespace vision_control
         A.insert(1, 1) = 1;
         A.insert(2, 2) = 1;
         A.insert(3, 3) = 1;
+
+        // Find min slack value on fov
+        double m = slack.block<2,2>(0,0).minCoeff();
+        std::cout << "*** Min value in slack variables: " << m << " ***" << std::endl;
+        // upperbound.head(2) = std::max(0.1, std::min(m, max_vel_))*Eigen::Vector2d::Ones();
+        // lowerbound.head(2) = -upperbound.head(2);
 
         // Constraints on target
         /* --------- Removed for only coverage control (DARS24) ----------
@@ -182,7 +190,7 @@ namespace vision_control
             A.insert(4 + 4*i + 3, 0) = -2 * p_j_i(0);
             A.insert(4 + 4*i + 3, 1) = -2 * p_j_i(1);
             A.insert(4 + 4*i + 3, 2) = 0;
-            A.insert(4 + 4*i + 3, 3) = -0.001;           // slack var
+            A.insert(4 + 4*i + 3, 3) = -100.0;           // slack var
             double h_0 = tan(fow_angle_/2) * p_j_i(0) + p_j_i(1);
             double h_1 = tan(fow_angle_/2) * p_j_i(0) - p_j_i(1);
             double h_2 = pow(p_j_i.norm(), 2) - pow(min_distance_, 2);
@@ -214,6 +222,7 @@ namespace vision_control
             if (!solver.updateGradient(f)) return 1;
             if (!solver.updateLinearConstraintsMatrix(A)) return 1;
             if (!solver.updateUpperBound(upperbound)) return 1;
+            if (!solver.updateLowerBound(lowerbound)) return 1;
         }
 
         if (solver.solveProblem() != OsqpEigen::ErrorExitFlag::NoError) return 1;
